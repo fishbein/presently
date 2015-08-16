@@ -20,8 +20,9 @@
 							<div ng-class="{today: $index == 0}">
 								<img class="{{ day.icon }}" ng-src="{{ day.icon_url }}" />
 								<h3>{{ day.high.fahrenheit }}</h3>
-								<h4 ng-if="$index == 0">Now</h4>
-								<h4 ng-if="$index != now">{{ day.date.weekday }}</h4>
+								<small>{{ day.low.fahrenheit }}</small>
+								<h4 ng-if="$index == 0">Today</h4>
+								<h4 ng-if="$index != 0">{{ day.date.weekday }}</h4>
 							</div>
 						</li>
 					</ul>

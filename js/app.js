@@ -17,6 +17,7 @@ angular.module('myApp', [])
 					cache: true
 				}).success(function(data){
 					d.resolve(data.forecast.simpleforecast);
+					console.log(data.forecast.simpleforecast)
 				}).error(function(err) {
 					d.reject(err);
 				});
@@ -42,7 +43,21 @@ angular.module('myApp', [])
 
 	$scope.weather = {};
 
-	Weather.getWeatherForecast("NY/New_York")
+	// $scope.light = {};
+
+	// $scope.dark = {};
+
+	// var changeColor = function(color){
+	// 	if color == dark {
+	// 		$scope.light = false;
+	// 		$scope.dark = true;
+	// 	} else {
+	// 		$scope.light = true;
+	// 		$scope.dark = false;
+	// 	}
+	// };
+
+	Weather.getWeatherForecast("NJ/Beach_Haven")
 	.then(function(data) {
 		$scope.weather.forecast = data;
 	});
@@ -58,8 +73,10 @@ angular.module('myApp', [])
 		var hour = $filter('date')($scope.date.raw, 'HH');
 		if(hour >= 17 || hour <= 3)
 			greeting = "evening";
+			// changeColor("dark");
 		else if(hour > 3 && hour < 12)
 			greeting = "morning";
+			// changeColor("light");
 		else if(hour >= 12 && hour < 17)
 			greeting = "afternoon";
 
